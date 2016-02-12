@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CheckoutKata.Models;
-
+using CheckoutKata.Repository;
 namespace CheckoutKata.Services
 {
-    public class ProductService
+    interface IProductService
     {
-        
+        int Checkout(string items);
+    }
+    public class ProductService:IProductService
+    {
+        private IRepository _repository;
+        public ProductService()
+        {
+            _repository = new ProductRepository();
+        }
         public int Checkout(string items)
         {
-            var availableProducts = Factory.ProductFactory.GetAvailableProducts();
+            var availableProducts = _repository.GetAll();
             var total = 0;
 
             foreach (var p in availableProducts)

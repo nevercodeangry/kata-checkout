@@ -10,7 +10,7 @@ namespace CheckoutKata.Controllers
 {
     public class StoreController : Controller
     {
-        private ProductService _service;
+        private IProductService _service;
         public StoreController()
         {
             _service = new ProductService();
@@ -18,7 +18,6 @@ namespace CheckoutKata.Controllers
         // GET: Checkout
         public ActionResult Index()
         {
-            ViewBag.Total = 0;
             return View(new ProductViewModel());
         }
         [HttpPost]

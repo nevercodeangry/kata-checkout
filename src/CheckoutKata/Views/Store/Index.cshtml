@@ -11,9 +11,9 @@
     <div class="form-horizontal">
       
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @if (ViewBag.Total != 0)
+        @if (ViewBag.Total != null)
         {
-            <div class="alert-danger">
+            <div class="alert-success">
                 <p>
                     Your current total is @ViewBag.Total.ToString()
                 </p>

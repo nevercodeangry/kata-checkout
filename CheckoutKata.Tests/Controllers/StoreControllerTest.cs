@@ -13,6 +13,32 @@ namespace CheckoutKata.Tests.Controllers
     public class StoreControllerTest
     {
         [TestMethod]
+        public void InvalidEntryEquals0()
+        {
+            // Arrange
+            StoreController controller = new StoreController();
+
+            // Act
+            ViewResult result = controller.Index(new ViewModels.ProductViewModel() { Item = "w" }) as ViewResult;
+
+            // Assert
+            Assert.AreEqual(0, result.ViewBag.Total);
+        }
+
+        [TestMethod]
+        public void AAAWEquals130()
+        {
+            // Arrange
+            StoreController controller = new StoreController();
+
+            // Act
+            ViewResult result = controller.Index(new ViewModels.ProductViewModel() { Item = "aaaw" }) as ViewResult;
+
+            // Assert
+            Assert.AreEqual(130, result.ViewBag.Total);
+        }
+
+        [TestMethod]
         public void AAAEquals130()
         {
             // Arrange
